@@ -248,7 +248,7 @@ body {
 
 /* header - START */
 .header-container {
-    background-image: url("../images/header/header-bg.png");
+    background-image: url("images/header/header-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 10% bottom;
@@ -294,7 +294,7 @@ body {
 
 /* courses - BEGIN */
 .courses-container {
-    background: url("../images/background-img.png") no-repeat center bottom / cover;
+    background: url("images/background-img.png") no-repeat center bottom / cover;
     width: 100%;
 }
 
@@ -622,7 +622,7 @@ body {
 }
 
 .course-content {
-    background-image: url("../images/background-img.png");
+    background-image: url("images/background-img.png");
     background-size: cover;
     display: flex;
     flex-flow: column nowrap;

@@ -19,15 +19,15 @@ function navigateCourseConTent() {
             <h1 class="title">&lt;Quizes/&gt;</h1>
             <div class="options">
                 <div id="html" class="exercise type-quiz">
-                    <img src="../../images/lesson/pencil-icon.png" alt="HTML" />
+                    <img src="images/lesson/pencil-icon.png" alt="HTML" />
                     <h3 class="label">HTML</h3>
                 </div>
                 <div id="css" class="lesson type-quiz">
-                    <img src="../../images/lesson/notebook-icon.png" alt="CSS" />
+                    <img src="images/lesson/notebook-icon.png" alt="CSS" />
                     <h3 class="label">CSS</h3>
                 </div>
                 <div id="js" class="video type-quiz">
-                    <img src="../../images/lesson/star-icon.png" alt="JAVASCRIPT" />
+                    <img src="images/lesson/star-icon.png" alt="JAVASCRIPT" />
                     <h3 class="label">JAVASCRIPT</h3>
                 </div>
             </div>

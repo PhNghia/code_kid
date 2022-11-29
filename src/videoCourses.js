@@ -24,15 +24,15 @@ export function renderListOfLessonOfCourse(lesson) {
             </div>
 			<div class="course-lesson-content course-lesson-content-video">
 				<video id="demovid" controls>
-					<source src="../videos/HTMLcoding1.mp4" type="video/mp4">
+					<source src="videos/HTMLcoding1.mp4" type="video/mp4">
 				</video>
 				<div class="progress" >
 					<progress id="progressBar" value="0" min="0"></progress>
 					<input id="seek" type="range" min="0" value="0"></input>
 				</div>
 				<div class="controller">
-					<img id="video-pause-icon" class="ctrl-play" src="../images/lesson/playvideo-icon.png"alt="Play" ></img>
-					<img class="ctrl-fullscr" src="../images/lesson/fullscreen-icon.png" alt="Full Screen"></img>
+					<img id="video-pause-icon" class="ctrl-play" src="images/lesson/playvideo-icon.png"alt="Play" ></img>
+					<img class="ctrl-fullscr" src="images/lesson/fullscreen-icon.png" alt="Full Screen"></img>
 				</div>
 			</div>
 		</div>

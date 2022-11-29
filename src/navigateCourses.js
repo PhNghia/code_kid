@@ -49,22 +49,22 @@ function navigateToCourseContent(id) {
                     <input type="range" min="0" max="100" value="50"></input>
                 </div>
                 <div class="controller">
-                    <img src="../images/lesson/playvideo-icon.png" alt="Play"></img>
-                    <img src="../images/lesson/fullscreen-icon.png" alt="Full Screen"></img>
+                    <img src="images/lesson/playvideo-icon.png" alt="Play"></img>
+                    <img src="images/lesson/fullscreen-icon.png" alt="Full Screen"></img>
                 </div>
             </div>
 
             <div class="options">
                 <div id="course-video" class="video">
-                    <img src="../images/lesson/star-icon.png" alt="Video" />
+                    <img src="images/lesson/star-icon.png" alt="Video" />
                     <h3 class="label">Video</h3>
                 </div>
                 <div id="course-document" class="lesson">
-                    <img src="../images/lesson/notebook-icon.png" alt="Document" />
+                    <img src="images/lesson/notebook-icon.png" alt="Document" />
                     <h3 class="label">Document</h3>
                 </div>
                 <div id="course-exercise" class="exercise">
-                    <img src="../images/lesson/pencil-icon.png" alt="Exercise" />
+                    <img src="images/lesson/pencil-icon.png" alt="Exercise" />
                     <h3 class="label">Exercise</h3>
                 </div>
             </div>
