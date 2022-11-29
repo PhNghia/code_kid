@@ -1,4 +1,4 @@
-import { courses } from '../database/courses.js'
+import { courses } from './coursesData.js'
 import setupDocument from './documentOfCourse.js'
 import setupExercise from './exerciseOfCourse.js'
 import setupVideo, { renderListOfLessonOfCourse } from './videoCourses.js'

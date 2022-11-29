@@ -1,5 +1,5 @@
 import Quiz from './Quiz.js'
-import { courses } from '../database/courses.js'
+import { courses } from './coursesData.js'
 
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)

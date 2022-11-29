@@ -1,4 +1,4 @@
-import { quiz } from '../database/quiz.js'
+import { quiz } from './quizData.js'
 
 export default class Quiz {
 
