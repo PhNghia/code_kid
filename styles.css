@@ -607,12 +607,12 @@ body {
 /* course content - BEGIN */
 @font-face {
     font-family: "KG Happy Solid";
-    src: url("../fonts/KGHAPPYSolid.ttf");
+    src: url("fonts/KGHAPPYSolid.ttf");
 }
 
 @font-face {
     font-family: "HP Arial Round";
-    src: url("../fonts/HP-Arial Round.ttf");
+    src: url("fonts/HP-Arial Round.ttf");
 }
 
 @media screen and (max-width: 792px) {
