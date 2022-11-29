@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-Child</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./images/header/header-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d186f66a5e.js" crossorigin="anonymous"></script>
+    <script type="module" src="./script.js" defer></script>
+</head>
+
+<body>
+    <!-- navbar BEGIN -->
+    <header class="nav-header">
+        <div class="nav-content">
+            <h1 class="nav-title">
+                <a href="/">
+                    <img class="nav-title-image" id="nav-brand" src="https://i.ibb.co/tHvWth7/logo-icon.png">
+                </a>
+            </h1>
+            <nav class="nav-right">
+                <button class="Button" id="Button" onclick="hidemenu()">Menu</button>
+                <ul class="nav-list" id="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-home" href="/">
+                            <img class="nav-icon nav-icon-home" src="https://i.ibb.co/HhCPDJh/playground-icon.png">
+                            <span class="nav-icon-label nav-label-home">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-html" href="#">
+                            <img class="nav-icon nav-icon-html" src="https://i.ibb.co/g3f5VVG/book-icon.png">
+                            <span class="nav-icon-label nav-label-html">HTML</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-css" href="#">
+                            <img class="nav-icon nav-icon-css" src="https://i.ibb.co/0fWk7pj/video-icon.png">
+                            <span class="nav-icon-label nav-label-css">CSS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-js" href="#">
+                            <img class="nav-icon nav-icon-js" src="https://i.ibb.co/b2czCHK/game-icon.png">
+                            <span class="nav-icon-label nav-label-js">JS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-quiz" href="#">
+                            <img class="nav-icon nav-icon-quiz" src="https://i.ibb.co/YDgwc4s/math-icon.png">
+                            <span class="nav-icon-label nav-label-quiz">QUIZ</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-login" href="#">
+                            <img class="nav-icon nav-icon-login" src="https://i.ibb.co/QF7JTS4/search-icon.png">
+                            <span class="nav-icon-label nav-label-login">Log in</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <script>
+            function hidemenu() {
+                var x = document.getElementById("nav-list");
+                var y = document.getElementById("nav-brand");
+                var z = document.getElementById("Button");
+                if (x.className === "nav-list") {
+                    x.className += "-expanded";
+                    y.className += "-expanded";
+                    z.className += "-expanded";
+                }
+                else {
+                    x.className = "nav-list";
+                    y.className = "nav-title-image";
+                    z.className = "Button";
+                }
+            }
+        </script>
+    </header>
+
+
+    <!-- header BEGIN -->
+    <div>
+        <header>
+            <div class="header-container">
+                <div class="header-content">
+                    <div class="header-wrap-left">
+                        <h1>Grow curious minds</h1><br>
+                        <p>Lorem ipsum is simply dummy text of the pr</p>
+                        <p>inting and typesetting industry. Lorem Ipsum has been the industry's stand</p>
+                        <p>ard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+                        <p>of the release of Letraset sheets containing Lorem Ipsum passages, and more</p>
+                    </div>
+                    <div class="header-wrap-right">
+                        <img src="../images/header/header-icon.png" alt="">
+                    </div>
+                </div>
+        </header>
+    </div>
+    <!-- header END -->
+
+    <!-- cousers BEGIN -->
+    <div id="navigate-content">
+        <div class="courses-container">
+            <div class="courses-body">
+                <h2 class="courses-title">Courses</h2>
+                <div class="courses-main">
+                    <div id="html" class="courses-card">
+                        <div class="courses-card-wrap">
+                            <div class="courses-img">
+                                <img src="../images/courses/html-icon.png" alt="">
+                            </div>
+                            <div class="courses-card-details">
+                                <div class="name">HTML</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="css" class="courses-card">
+                        <div class="courses-card-wrap">
+                            <div class="courses-img">
+                                <img src="../images/courses/css-icon.png" alt="">
+                            </div>
+                            <div class="courses-card-details">
+                                <div class="name">CSS</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="js" class="courses-card">
+                        <div class="courses-card-wrap">
+                            <div class="courses-img">
+                                <img src="../images/courses/js-icon.png" alt="">
+                            </div>
+                            <div class="courses-card-details">
+                                <div class="name">Javascript</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- courses END -->
+
+    <!-- footer START -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-content-options">
+                    <li>PRIVACY</li>
+                    <li>About</li>
+                    <li>FAQ</li>
+                    <li>Blog</li>
+                    <li>Term of Use</li>
+                    <li>Cookie Policy</li>
+                </div>
+                <div class="footer-content-socials">
+                    <a class="button-facebook" href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a class="button-instagram" href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a class="button-printerest" href=""><i class="fa-brands fa-pinterest"></i></a>
+                    <a class="button-twitter" href=""><i class="fa-brands fa-twitter"></i></a>
+                    <a class="button-youtube" href=""><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <div class="footer-content-copyright ">
+                    <p>© 1999-2022 BrainPOP. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer END -->
+
+    <!-- Form login sign in BEGIN-->
+    <div class="form-modal">
+        <div class="loginContainer">
+            <div class="forms">
+                <div class="form login">
+                    <span class="title">Login</span>
+    
+                    <form action="#">
+                        <div class="input-field">
+                            <input type="text" id="email" placeholder="Enter your email" required>
+                            
+                        </div>
+                        <div class="input-field">
+                            <input type="password" id="password" class="password" placeholder="Enter your password" required>
+    
+                        </div>
+    
+                        <div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="logCheck">
+                                <label for="logCheck" class="text">Remember me</label>
+                            </div>
+                            
+                            <a href="#" class="text">Forgot password?</a>
+                        </div>
+    
+                        <div class="input-field button">
+                            <input type="button" value="Login" class="btn btn-login">
+    
+                        </div>
+                    </form>
+    
+                    <div class="login-signup">
+                        <span class="text">Not a member?
+                            <a href="#" class="text signup-link">Signup Now</a>
+                        </span>
+                    </div>
+                </div>
+    
+                <!-- Registration Form -->
+                <div class="form signup">
+                    <span class="title">Registration</span>
+    
+                    <form action="#">
+                        <div class="input-field">
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                            
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="mail" placeholder="Enter your email" required>
+                            
+                        </div>
+                        <div class="input-field">
+                            <input type="password" class="password" id="pass" placeholder="Create a password" required>
+                            
+                        </div>
+                        <div class="input-field">
+                            <input type="password" class="password" id="pass1" placeholder="Confirm a password" required>
+                            
+                        </div>
+    
+                        <div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="termCon">
+                                <label for="termCon" class="text">I accepted all terms and conditions</label>
+                            </div>
+                        </div>
+    
+                        <div class="input-field button">
+                            <input type="button" value="Signup" id="btn">
+                            
+                        </div>
+                    </form>
+    
+                    <div class="login-signup">
+                        <span class="text">Already a member?
+                            <a href="#" class="text login-link">Login Now</a>
+                        </span>
+                    </div>
+                </div>
+    
+            </div>
+            
+        </div>
+    </div>
+    <!-- form login sign in END -->
+
+</body>
+
+</html>
