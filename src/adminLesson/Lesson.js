@@ -50,7 +50,6 @@ export default class Lessons {
             this.bindClickExerciseItem(this.getElements('.admin-exercises-menu')[0])
         } else {
             this.renderFormAddLesson()
-            this.bindSubmitFormAddLesson()
         }
     }
 
@@ -139,6 +138,7 @@ export default class Lessons {
                 <input type="submit" />
             </form>
         `
+        this.bindSubmitFormAddLesson()
     }
 
     bindClickLesson () {
@@ -170,7 +170,6 @@ export default class Lessons {
                 e.parentElement.classList.remove('active')
             })
             this.renderFormAddLesson()
-            this.bindSubmitFormAddLesson()
         })
     }
 
@@ -201,6 +200,7 @@ export default class Lessons {
             const isDelete = confirm(`Are you sure you want to delete the ${this.currentLesson.name} lesson?`)
             if (isDelete) {
                 this.data = this.data.filter(value => value.id !== this.currentLesson.id)
+                this.data = this.data.map((value, index) => ({ ...value, id: index + 1 }))
                 this.currentLesson = this.data[0]
                 this.saveLocal()
                 this.render()

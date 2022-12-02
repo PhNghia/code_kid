@@ -57,8 +57,7 @@ function renderListOfLessonOfExercise(lesson, currentExercise, ...args) {
     setupLessonExercises(lesson)
     renderExerciseContent(currentExercise)
     setupSubmitAnswer(currentExercise, lesson)
-    setupTryAgain(currentExercise)
-    setupNextExercise(currentExercise, lesson)
+    
 }
 
 function renderExerciseContent (exercise) {
@@ -144,10 +143,11 @@ function handleSubmitAnswer (exercise, correctAnswers, lesson) {
         `
         renderButton(0, 1, 0)
         exerciseAnswerElement.addEventListener('click', () => {
-            if (exerciseAnswerElement.matches('.submit')) {
+            if (exerciseAnswerElement.matches('.submit.correct')) {
                 nextExercise(lesson, exercise)
             }
         })
+        setupNextExercise(exercise, lesson)
     } else {
         exerciseAnswerElement.classList.add("submit", "incorrect")
         exerciseAnswerElement.innerHTML = `
@@ -156,10 +156,11 @@ function handleSubmitAnswer (exercise, correctAnswers, lesson) {
         `
         renderButton(0, 0, 1)
         exerciseAnswerElement.addEventListener('click', (e) => {
-            if (exerciseAnswerElement.matches('.submit')) {
+            if (exerciseAnswerElement.matches('.submit.incorrect')) {
                 tryAgain(exercise)
             }
         })
+        setupTryAgain(exercise)
     }
 }
 
@@ -173,7 +174,7 @@ function setupTryAgain (exercise) {
 function setupNextExercise (exercise, lesson) {
     const nextExerciseBtn = document.querySelector('.exercise-submit-button.next-exercise')
     nextExerciseBtn.addEventListener('click', () => {
-        nextExercise(exercise, lesson)
+        nextExercise(lesson, exercise)
     })
 }
 
