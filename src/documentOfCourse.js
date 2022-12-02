@@ -1,7 +1,10 @@
+import SyntaxDocument from './adminLesson/SyntaxDocument.js'
+
 export default function setupDocument(lesson) {
     const documentElement = document.getElementById('course-document')
     documentElement.addEventListener('click', () => {
         renderListOfLessonOfCourse(lesson)
+        renderContentOfLesson(lesson[0])
     })
 }
 
@@ -19,7 +22,7 @@ function renderListOfLessonOfCourse(lesson) {
                     }).join('')}
                 </div>
             </div>
-            <div class="course-lesson-content"></div>
+            <div class="course-lesson-content result-edit-document"></div>
         </div>
     `
 
@@ -41,7 +44,12 @@ function setupCourseLessonList(lesson) {
 
 function renderContentOfLesson(content) {
     const courseLessonContent = document.querySelector('.course-lesson-content')
-    courseLessonContent.innerHTML = content.document
+    courseLessonContent.innerHTML = new SyntaxDocument().convertHTML(content.document)
+    if (courseLessonContent.querySelectorAll('*').length == 1) {
+        Object.assign(courseLessonContent.querySelectorAll('*')[0].style, {
+            textAlign: 'center'
+        })
+    }
 }
 
 export function setupToggleLessonList() {

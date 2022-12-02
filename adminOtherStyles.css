@@ -1,0 +1,336 @@
+body {
+    background-color: #eeeeee;
+    display: grid;
+    grid-template-rows: 64px auto;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.navbar {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0px 8px 8px #cccccc;
+    grid-row: 1/2;
+    position: relative;
+    /* justify-content: space-between; */
+}
+
+.navbar>a.back,
+.navbar>a.done {
+    border-radius: 28px;
+    font-size: 24px;
+    margin: 4px;
+    padding: 12px;
+    width: 24px;
+    height: 24px;
+    color: #000000;
+}
+
+.navbar>a.done {
+    position: absolute;
+    right: 0;
+}
+
+.navbar>a.back:hover,
+.navbar>a.done:hover {
+    background-color: #eeeeee;
+    background-clip: border-box;
+    border-radius: 28px;
+}
+
+.navbar>.title {
+    margin-left: 8px;
+    font-size: 22px;
+}
+
+
+.content>.optionGroup {
+    margin: 8px;
+    font-size: 24px;
+    padding: 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 4px 8px 8px #cccccc;
+}
+
+.optionGroup>hr {
+    margin: 16px 0px;
+    border-style: dashed;
+}
+
+.search,
+.input,
+.button {
+    font-size: 1em;
+    margin: 8px;
+    border: none;
+    position: relative;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.input,
+.button {
+    margin: 24px;
+}
+
+.button:hover {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+.courses>.content>.optionGroup>.answers>.input>input[type="checkbox"].checkbox {
+    position: absolute;
+    top: 50%;
+    left: 24px;
+    transform: translateY(-50%);
+}
+
+label.checkbox {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    top: calc(50% - 20px);
+    left: 8px;
+    padding: 8px;
+}
+
+.answers>.input>.remove {
+    position: absolute;
+    right: 8px;
+    padding: 8px;
+    top: calc(50% - 20px);
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+label.checkbox:hover {
+    background-color: #eeeeee;
+    border-radius: 20px;
+}
+
+label.checkbox::before {
+    content: "\F0131"
+}
+
+.answers>.input>.remove:hover {
+    background-color: #eeeeee;
+    border-radius: 20px;
+}
+
+label.checkbox>input[type="checkbox"] {
+    display: none;
+}
+
+label.checkbox:has(>input[type="checkbox"]:checked)::before {
+    content: "\F0132";
+}
+
+.search>.search-icon,
+.input>.icon,
+.button>.icon {
+    position: absolute;
+    padding: 12px;
+    top: calc(50% - 24px);
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+}
+
+.search>.add-icon {
+    position: absolute;
+    padding: 12px;
+    top: 1px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.search>.add-icon:hover {
+    border-radius: 24px;
+    background-color: #eeeeee;
+}
+
+.search>.placeholder,
+.input>.placeholder {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    padding: 12px 56px 12px 56px;
+    background-color: transparent;
+}
+
+.search>.placeholder.shown,
+.input>.placeholder.shown {
+    opacity: 0.5;
+}
+
+.search>.text,
+.input>.text,
+.button>.text {
+    position: relative;
+    padding: 12px 56px 12px 56px;
+    background: transparent;
+}
+
+.search>.add-icon:hover+.add-options {
+    display: flex;
+}
+
+.search>.add-options:has(>*:hover) {
+    display: flex;
+}
+
+.search>.add-options {
+    display: none;
+    flex-flow: column nowrap;
+    position: absolute;
+    right: 0;
+    top: -8px;
+    padding: 8px 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px #cccccc;
+    z-index: 1;
+}
+
+.search>.add-options>.option {
+    position: relative;
+    right: 0;
+    top: 0;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.search>.add-options>.option:hover {
+    border-radius: 8px;
+    background-color: #eeeeee;
+}
+
+.search>.add-options>hr {
+    position: relative;
+    margin: 0 8px;
+    border: 1px solid #eeeeee;
+    width: calc(100% - 16px);
+}
+
+.search>.add-options>.option>.icon {
+    height: 24px;
+    width: 24px;
+    font-size: 24px;
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.search>.add-options>.option>.title {
+    padding: 8px;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.items>.item {
+    padding: 16px 24px;
+    position: relative;
+}
+
+.items>.item:hover {
+    border-radius: 8px;
+    background-color: #eeeeee;
+}
+
+.optionGroup>.items>hr {
+    margin: 0 8px;
+}
+
+.unselectable {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.optionGroup>.items>.item>.subtitle {
+    font-size: 0.8em;
+    opacity: 0.75;
+}
+
+.optionGroup>.items>.item>.options {
+    bottom: calc(50% - 32px);
+    right: 12px;
+}
+
+.items>.item>.options {
+    background-color: #ffffff;
+    position: absolute;
+    padding: 8px;
+    display: none;
+    flex-flow: row nowrap;
+    border-radius: 16px;
+    box-shadow: 0px 4px 8px #cccccc;
+}
+
+.items>.item:hover>.options {
+    display: flex;
+}
+
+.items>.item>.options>.icon {
+    height: 24px;
+    width: 24px;
+    font-size: 24px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.items>.item>.options>.icon:hover {
+    border-radius: 24px;
+    background-color: #eeeeee;
+}
+
+.overlay {
+    display: none;
+    background-color: #88888888;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.overlay.shown {
+    display: flex;
+}
+
+.content {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 8px;
+    grid-row: 2/3;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.form {
+    background-color: #eeeeee;
+    display: grid;
+    grid-template-rows: 64px auto;
+    position: relative;
+    margin: auto;
+    width: min(calc(100%), 640px);
+    height: min(calc(100%), 480px);
+    box-shadow: 0px 16px 32px #cccccc;
+    z-index: 10;
+}

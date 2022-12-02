@@ -1,4 +1,8 @@
-import { quiz } from './quizData.js'
+import { loadDatabase, getCourses } from './adminOther/database.js'
+
+;(() => {
+    loadDatabase()
+})()
 
 export default class Quiz {
 
@@ -6,14 +10,16 @@ export default class Quiz {
         this.root = this.getElement('#view-root')
         this.container = this.createElement('div', 'quiz-container')
         this.id = id;
-        this.questions = [...quiz[id]];
-        this.myAnswers = {}
+        this.questions = [...getCourses()[id].quizzes];
+        this.randomQuestions()
+        this.myAnswers = this.questions.map(q => [])
         this.currentIndex = 0;
         this.currentQuestion = this.questions[this.currentIndex]
         this.scrollbar = this.getElement('.quiz-scrollbar') || this.createElement('div', 'quiz-scrollbar')
         this.main = this.getElement('.quiz-main') || this.createElement('div', 'quiz-main')
         this.container.append(this.scrollbar, this.main)
         this.root.append(this.container)
+
     }
 
     createElement(tag, className) {
@@ -32,22 +38,38 @@ export default class Quiz {
         return document.querySelectorAll(selector)
     }
 
+    randomQuestions () {
+        const newQuestions = []
+        if (this.questions.length > 40) {
+            for (let i = 0; i < 40; i++) {
+                
+                const question = this.questions.splice(Math.floor(Math.random() * this.questions.length), 1)
+                newQuestions.push(question[0])
+            }
+        } else {
+            let max = Math.floor(this.questions.length / 5) * 5
+            this.questions.forEach((question, index) => {
+                if (index >= max) {
+                    return
+                }
+                newQuestions.push(question)
+            })
+        }
+        this.questions = newQuestions
+    }
+
     renderListQuestion() {
         this.scrollbar.innerHTML = `
             <div>
                 ${this.questions.map((question, index) => {
-                    // if (this.questions.length / 2 < index) {
+                    // if ((this.questions.length / 2) < index) {
                     //     this.handleSubmitAnswers()
-                    //     return;
+                    //     return
                     // }
-                    // Object.keys(question.correctAnswer).forEach(key => {
-                    //     if (question.correctAnswer[key]) {
-                    //         this.myAnswers[index] = key
-                    //     }
-                    // })
+                    // this.myAnswers[index] = [...question.corrects]
             if (index % 2 !== 0) return ''
             return `
-                        <button class="quiz-question-stt ${this.myAnswers[index] ? "quiz-question-stt-answered" : ""} ${index === this.currentIndex ? "active" : ""}" data-id=${index}>Question ${index + 1}</button>
+                        <button class="quiz-question-stt ${this.myAnswers[index].includes(true) ? "quiz-question-stt-answered" : ""} ${index === this.currentIndex ? "active" : ""}" data-id=${index}>Question ${index + 1}</button>
                     `
         }).join('')}
             </div>
@@ -55,7 +77,7 @@ export default class Quiz {
             ${this.questions.map((question, index) => {
             if (index % 2 === 0) return ''
             return `
-                    <button class="quiz-question-stt ${this.myAnswers[index] ? "quiz-question-stt-answered" : ""} ${index === this.currentIndex ? "active" : ""}" data-id=${index}>Question ${index + 1}</button>
+                    <button class="quiz-question-stt ${this.myAnswers[index].includes(true) ? "quiz-question-stt-answered" : ""} ${index === this.currentIndex ? "active" : ""}" data-id=${index}>Question ${index + 1}</button>
                 `
         }).join('')}
             </div>
@@ -68,9 +90,9 @@ export default class Quiz {
             <p class="quiz-question-subtitle">Question ${this.currentIndex + 1}</p>
             <h3 class="quiz-question-title">${this.currentQuestion.question}</h3>
             <ul class="quiz-question-list-answer">
-                ${Object.keys(this.currentQuestion.answers).map(key => {
+                ${this.currentQuestion.answers.map((answer, key) => {
             return `<li>
-                        <input type="radio" name="question" data-id=${key} ${this.myAnswers[this.currentIndex] === key ? "checked" : ""}/>
+                        <input type="radio" name="question" data-id=${key} ${this.myAnswers[this.currentIndex][key] ? "checked" : ""}/>
                         <span class="quiz-question-icon-check"><i class="fa-solid fa-check"></i></span>
                         <span>${this.currentQuestion.answers[key]}</span>
                     </li>`
@@ -92,7 +114,6 @@ export default class Quiz {
         const buttons = this.getAllElements('.quiz-question-stt')
         buttons.forEach(btn => {
             btn.addEventListener('click', () => {
-                
                 this.changeCurrentQuestion(parseInt(btn.dataset.id))
             })
         })
@@ -128,17 +149,21 @@ export default class Quiz {
         const inputs = this.getAllElements('input[type="radio"]')
         inputs.forEach(input => {
             if (input.checked) {
-                this.myAnswers = { ...this.myAnswers, [this.currentIndex]: input.dataset.id }
+                this.myAnswers[this.currentIndex].push(true)
+            } else {
+                this.myAnswers[this.currentIndex].push(false)
             }
         })
     }
 
     handleSubmitAnswers() {
-        let numberCorrectQuestion = Object.keys(this.myAnswers).reduce((acc, key) => {
-            if (this.questions[key].correctAnswer[this.myAnswers[key]] === true) {
-                return acc + 1
+        let numberCorrectQuestion = this.questions.reduce((acc, question, index) => {
+            for (let i = 0; i < question.corrects.length; i++) {
+                if (question.corrects[i] !== this.myAnswers[index][i]) {
+                    return acc
+                }
             }
-            return acc
+            return acc + 1
         }, 0)
         this.renderResultQuiz(numberCorrectQuestion)
     }
@@ -161,19 +186,19 @@ export default class Quiz {
                                 <div class="quiz-result-item-answers-compare">
                                     <ul class="quiz-question-list-answer result">
                                         <p>Your answer</p>
-                                        ${Object.keys(item.answers).map(key => {
+                                        ${item.answers.map((answer, i) => {
                                             return `<li>
-                                                        ${this.myAnswers[index] === key ? `<span class="quiz-question-icon-check result correct"><i class="fa-solid fa-check"></i></span>` : `<span class="quiz-question-icon-check result"><i class="fa-solid fa-xmark"></i></span>`}
-                                                        <span>${item.answers[key]}</span>
+                                                        ${this.myAnswers[index][i] ? `<span class="quiz-question-icon-check result correct"><i class="fa-solid fa-check"></i></span>` : `<span class="quiz-question-icon-check result"><i class="fa-solid fa-xmark"></i></span>`}
+                                                        <span>${answer}</span>
                                                     </li>`
                                         }).join('')}
                                     </ul>
                                     <ul class="quiz-question-list-answer result">
                                         <p>Correct answer</p>
-                                        ${Object.keys(item.answers).map(key => {
+                                        ${item.answers.map((answer, i) => {
                                             return `<li>
-                                                        ${item.correctAnswer[key] ? `<span class="quiz-question-icon-check result correct"><i class="fa-solid fa-check"></i></span>` : `<span class="quiz-question-icon-check result"><i class="fa-solid fa-xmark"></i></span>`}
-                                                        <span>${item.answers[key]}</span>
+                                                        ${item.corrects[i] ? `<span class="quiz-question-icon-check result correct"><i class="fa-solid fa-check"></i></span>` : `<span class="quiz-question-icon-check result"><i class="fa-solid fa-xmark"></i></span>`}
+                                                        <span>${answer}</span>
                                                     </li>`
                                         }).join('')}
                                     </ul>

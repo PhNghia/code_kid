@@ -1,0 +1,394 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.courses-container {
+    min-height: calc(100vh - 72px);
+}
+
+.admin-content-root{
+    margin-top:-3em;
+    font-size:0.35em;
+    display:flex;
+    justify-content: center;
+}
+.admin-content-separator{
+    white-space: nowrap;
+    margin: 3.573em;
+}
+.admin-courses-button{
+    cursor:pointer;
+    background-color:rgb(255, 248, 234);
+    border:rgb(225, 192, 255) 0px solid;
+    width:15.75em;
+    font-family:var(--course-content-title-background);
+    padding:0.51em;
+    font-weight:300;
+    color:rgb(31, 4, 89);
+}
+.admin-courses-button:hover{
+    background-color:rgb(224, 213, 235);
+    color:rgb(112, 105, 96);
+}
+
+.admin-content-course-container {
+    height: calc(100vh - 72px);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-content-title{
+    background-color: rgb(131, 74, 185);
+    color: white;
+    font-family: var(--home-font);
+    padding: 10px 0;
+    padding-left: 1em;
+    text-align: left;
+    font-size:1.5em;
+    width: 100%;
+}
+
+.admin-content-course {
+    height: calc(100vh - 72px - 58.4px);
+    display:grid;
+    border:rgb(131, 74, 185) 1em solid;
+    border-top:rgb(131, 74, 185) 1.75em solid;
+    border: none;
+    background-color:white;
+    grid-template-columns: auto 1fr;
+}
+
+.button-delete-lesson {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.button-delete-lesson > button {
+    border: 1px solid red;
+    padding: 7px 16px;
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 150ms ease-in-out;
+}
+
+.button-delete-lesson > button > span {
+    margin-left: 8px;
+}
+
+.button-delete-lesson > button:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.admin-add-lesson-btn.admin-lesson-name {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-align: left;
+    font: inherit;
+    font-weight: bold;
+    background-color: #cdc9cf;
+    padding: 8.2px 10px;
+    z-index: 5;
+}
+.admin-add-lesson-btn:hover{
+    background-color:rgb(244, 204, 102);
+    color:rgb(73, 12, 130);
+}
+.admin-according {
+    width: 250px;
+    height: 100%;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.admin-lesson-item {
+    position: static;
+    border-bottom: 1px solid #ccc;
+}
+
+.admin-lesson-item.active {
+    position: sticky;
+    border-bottom: none;
+    z-index: 3;
+}
+
+.admin-lesson-name{
+    width: 100%;
+    font-size: 14px;
+    cursor:pointer;
+    padding: 12px 10px;
+    background-color:rgb(241 240 240);
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 600;
+}
+.admin-lesson-name:hover {
+    color:rgb(131, 74, 185);
+}
+
+.admin-lesson-menu p {
+    font-size: 14px;
+    padding: 8.2px 10px 8.2px 20px;
+    margin: 0;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+}
+.admin-lesson-menu p:hover,
+.admin-exercises-menu > li:hover {
+    background-color: #fdfafa;
+}
+.admin-exercises-menu > li {
+    font-size: 14px;
+    padding: 8.2px 10px 8.2px 30px;
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
+    display: flex;
+}
+
+.admin-exercises-menu > li > span {
+    display: none;
+    margin-left: auto;
+    width: 20px;
+    text-align: center;
+}
+
+.admin-exercises-menu > li:hover > span {
+    display: inline-block;
+    transition: color 100ms ease-in-out;
+}
+
+.admin-exercises-menu > li:hover > span:hover {
+    color: red;
+}
+
+.admin-content-edit {
+    height: calc(100vh - 72px - 58.4px);
+    padding: 10px 20px;
+    overflow-y: scroll;
+}
+
+.form-update-lesson-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-update-lesson-group > input[type="text"],
+.form-update-lesson-group > textarea {
+    font: inherit;
+    padding: 3px 10px;
+    border: 1px solid #333;
+    outline: none;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.form-update-lesson-group > input[type="file"] {
+    margin: 10px 0;
+}
+
+.form-update-lesson-group > input[type="text"]:focus,
+.form-update-lesson-group > textarea:focus {
+    border-color: rgb(131, 74, 185);
+}
+
+.form-update-lesson-group > textarea {
+    width: 100%;
+    min-height: 300px;
+    margin: 0;
+    resize: vertical;
+}
+
+.form-lesson-container{
+    margin:1em 2em;
+}
+.form-exercise-container{
+    margin:1em 2em;
+}
+.form-add-container{
+    margin:1em 2em;
+}
+
+.admin-form > legend {
+    font-weight: bold;
+    color: rgb(131, 74, 185);
+    padding: 0;
+}
+
+.admin-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-form > div > input[type="text"],
+.admin-form > div > input[type="number"] {
+    font: inherit;
+    padding: 3px 10px;
+    border: 1px solid #333;
+    outline: none;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.admin-form > div > input[type="number"] {
+    width: 50%;
+}
+
+.admin-form input[type="submit"] {
+    margin-top: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+    background-color: #ddd;
+    color: #333;
+    border-radius: 5px;
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
+}
+.admin-form input[type="submit"]:hover {
+    background-color: #ccc;
+}
+.admin-guide-container > button {
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+    background-color: #ddd;
+    color: #333;
+    border-radius: 5px;
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
+}
+
+.admin-guide-container > *:nth-child(2) {
+    margin-bottom: 15px;
+}
+
+.admin-form.admin-exercise-form-edit textarea {
+    width: 100%;
+    min-height: 200px;
+    margin: 10px 0;
+    resize: vertical;
+}
+
+.admin-exercise-form-result-container,
+.admin-form-result-document-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.admin-exercise-form-result-container > *,
+.admin-form-result-document-container > * {
+    padding: 0 20px;
+    margin-left: -20px;
+}
+
+.exercise-result-container {
+    width: 100%;
+    margin-left: 0;
+    margin-right: -20px;
+    word-break: break-word;
+    background-color: #f1f1f1;
+}
+
+.exercise-result-container h3 {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.exercise-result-container h4 {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.exercise-answer {
+    position: relative;
+    min-height: 250px;
+    padding: 16px 16px 70px;
+    background-color: #ddd;
+    border-radius: 7px;
+    font-size: 18px;
+    line-height: 1.2;
+    word-break: break-word;
+}
+.exercise-answer > input {
+    font: inherit;
+    width: min(100%, calc(var(--num) * 22px));
+    max-width: 100%;
+    border: 2px solid #222;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+div.result-edit-document {
+    font-size: 16px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: -20px;
+    word-break: break-word;
+    background-color: #f1f1f1;
+}
+
+div.result-edit-document .document-colspan {
+    background-color: #ddd;
+    display: inline-block;
+    font-weight: 500;
+    color: red;
+}
+
+div.result-edit-document .document-note {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 16px 32px;
+    background-color: #ffffcc;
+}
+
+div.result-edit-document .document-heading {
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+div.result-edit-document .document-intro {
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+div.result-edit-document .document-tag-syntax {
+    color: red;
+}
+
+div.result-edit-document .document-tag-tagName {
+    color: blue;
+}
+
+
+/* Mini According */
+.according-content {
+    background-color: #fff;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.according-content.show {
+    height: 100%;
+}
+
+textarea {
+    width: 50%;
+}

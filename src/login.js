@@ -23,15 +23,14 @@ login = document.querySelector(".login-link"),
 btnSignup = document.getElementById('btn'),
 btnLogin = document.querySelector(".btn-login");
 
-    // chuyển đổi từ log sang sign
-    signUp.addEventListener("click", ( )=>{
-        container.classList.add("active");
-    });
-    login.addEventListener("click", ( )=>{
-        container.classList.remove("active");
-    });
 
-//luu thong tin nguoi dang ki
+// chuyển đổi từ log sang sign
+signUp.addEventListener("click", ( )=>{
+    container.classList.add("active");
+});
+login.addEventListener("click", ( )=>{
+    container.classList.remove("active");
+});
 
 btnSignup.addEventListener("click", (e) => {
   e.preventDefault();
@@ -46,7 +45,7 @@ let json = JSON.stringify(user);
 if (!document.getElementById('name').value || !document.getElementById('mail').value || !document.getElementById('pass').value || !document.getElementById('pass1').value ) {
     alert("Vui lòng nhập đầy đủ thông tin");
 } else {
-    localStorage.setItem(document.getElementById('name').value, json);
+    localStorage.setItem( document.getElementById('mail').value, json);
     alert("Đăng kí thành công");
 }
 });
@@ -56,19 +55,21 @@ btnLogin.addEventListener("click", (e) => {
 
     var  email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-  // console.log(user);
-  var user = localStorage.getItem(email);
-  var data = JSON.parse(user);
-  let json = JSON.stringify(user);
-  if (user == null) {    
-    alert("Vui lòng nhập đầy đủ thông tin");
-}
-else if (email == data.email && password == data.password) {
+    console.log(user);
+    var user = localStorage.getItem(email);
+    var data = JSON.parse(user);
+    var json = JSON.stringify(user);
+    if (user == null) {    
+        alert("Vui lòng nhập đầy đủ thông tin");
+    }
+    else if (email == data.email && password == data.password) {
 
-    alert("Đăng nhập thành công");
+        alert("Đăng nhập thành công");
 
-    window.location.href = "index.html";
-} else {
-    alert("Đăng nhập thất bại");
-}
+        window.location.href = "index.html";
+    } else {
+        alert("Đăng nhập thất bại");
+    }
 });
+
+

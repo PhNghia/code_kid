@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin's Options</title>
+    <link rel="stylesheet" href="materialdesignicons.min.css">
+    <link rel="stylesheet" href="adminOtherStyles.css">
+    <script type="module" src="src/adminOther/admin.js" defer></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="back mdi mdi-arrow-left" href="index.html"></a>
+        <span class="title">Administrator's Options</span>
+    </div>
+    <div class="content">
+        <div class="optionGroup users">
+            <div class="search">
+                <span class="search-icon mdi mdi-magnify"></span>
+                <span class="placeholder shown">Search for Users</span>
+                <div class="text" data-type="user" contenteditable></div>
+                <span class="add-icon mdi mdi-plus"></span>
+                <div class="add-options">
+                    <div class="option" data-type="user">
+                        <span class="icon mdi mdi-account"></span>
+                        <span class="title">Add User</span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="items"></div>
+        </div>
+        <div class="optionGroup courses">
+            <div class="search">
+                <span class="search-icon mdi mdi-magnify"></span>
+                <span class="placeholder shown">Search for Lessons and Quizzes</span>
+                <div class="text" data-type="course" contenteditable></div>
+                <span class="add-icon mdi mdi-plus"></span>
+                <div class="add-options">
+                    <!-- <div class="option" data-type="html-lesson">
+                        <span class="icon mdi mdi-text-box"></span>
+                        <span class="title">Add HTML Lesson</span>
+                    </div>
+                    <hr>
+                    <div class="option" data-type="css-lesson">
+                        <span class="icon mdi mdi-text-box"></span>
+                        <span class="title">Add CSS Lesson</span>
+                    </div>
+                    <hr>
+                    <div class="option" data-type="js-lesson">
+                        <span class="icon mdi mdi-text-box"></span>
+                        <span class="title">Add JavaScript Lesson</span>
+                    </div>
+                    <hr> -->
+                    <div class="option" data-type="html-quiz">
+                        <span class="icon mdi mdi-help-box"></span>
+                        <span class="title">Add HTML Quiz</span>
+                    </div>
+                    <hr>
+                    <div class="option" data-type="css-quiz">
+                        <span class="icon mdi mdi-help-box"></span>
+                        <span class="title">Add CSS Quiz</span>
+                    </div>
+                    <hr>
+                    <div class="option" data-type="js-quiz">
+                        <span class="icon mdi mdi-help-box"></span>
+                        <span class="title">Add JavaScript Quiz</span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="items"></div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</body>
+
+</html>

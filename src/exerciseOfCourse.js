@@ -5,7 +5,7 @@ const userAnswers = []
 export default function setupExercise(lesson) {
     const exerciseElement = document.getElementById('course-exercise');
     exerciseElement.addEventListener('click', () => {
-        const itemOfLesson = lesson.find(item => item.exercises)
+        const itemOfLesson = lesson.find(item => item.exercises && item.exercises.length > 0)
         if (itemOfLesson) {
             renderListOfLessonOfExercise(lesson, itemOfLesson.exercises[0])
         } else {
@@ -23,14 +23,14 @@ function renderListOfLessonOfExercise(lesson, currentExercise, ...args) {
             <div class="course-lesson-list-container ${args[0] && args[0].hideList && "hidden"}">
                 <div class="course-lesson-list">
                     ${lesson.map(item => {
-                        if (item['exercises']) {
+                        if (item['exercises'] && item['exercises'].length > 0) {
                             return `
                                 <div>
                                     <p id=${item.id} class="course-lesson-item">${item.name}</p>
                                     <ul class="course-lesson-item-list">
                                         ${item['exercises'].map((exercise, index) => {
                                             return `
-                                                <li id=${exercise.id} class="lesson-exercise ${exercise.id === currentExercise.id && exercise.idParent === currentExercise.idParent && "active"}" data-parentid=${item.id}>Exercise ${index + 1}</li>
+                                                <li data-id=${exercise.id} class="lesson-exercise ${exercise.id === currentExercise.id && exercise.idParent === currentExercise.idParent && "active"}" data-parentid=${item.id}>Exercise ${index + 1}</li>
                                             `
                                         }).join("")}
                                     </ul>
@@ -75,7 +75,7 @@ function setupLessonExercises(lesson) {
     lessonExerciseElements.forEach(exercise => {
         exercise.addEventListener('click', () => {
             const contentLesson = lesson.find(item => item.id === parseInt(exercise.dataset['parentid']))
-            const curentExercise = contentLesson['exercises'].find(item => item.id === exercise.id)
+            const curentExercise = contentLesson['exercises'].find(item => item.id === parseInt(exercise.dataset.id))
             renderListOfLessonOfExercise(lesson, curentExercise)
         })
     })
@@ -193,9 +193,7 @@ function nextExercise (lesson, exercise) {
         if (lesson[index].id === exercise.idParent) {
             isNext = true
             nextExercise = lesson[index].exercises.find(value => {
-                const idValue = parseInt(value.id.slice(value.id.indexOf('-') + 1, value.id.length))
-                const idCurerntExercise = parseInt(exercise.id.slice(exercise.id.indexOf('-') + 1, value.id.length))
-                return idValue === idCurerntExercise + 1
+                return value.id === exercise.id + 1
             })
             if (nextExercise) {
                 renderListOfLessonOfExercise(lesson, nextExercise, { hideList: true })
@@ -203,7 +201,7 @@ function nextExercise (lesson, exercise) {
             }
         } else {
             if (isNext) {
-                if (lesson[index].exercises && lesson[index].exercises[0]) {
+                if (lesson[index].exercises && lesson[index].exercises.length > 0 && lesson[index].exercises[0]) {
                     nextExercise = {...lesson[index].exercises[0]}
                     renderListOfLessonOfExercise(lesson, nextExercise, { hideList: true })
                     return

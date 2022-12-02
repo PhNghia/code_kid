@@ -1,4 +1,4 @@
-import { courses } from './coursesData.js'
+import { getCourses } from './coursesData.js'
 import setupDocument from './documentOfCourse.js'
 import setupExercise from './exerciseOfCourse.js'
 import setupVideo, { renderListOfLessonOfCourse } from './videoCourses.js'
@@ -33,6 +33,7 @@ export default function setupNavigate() {
 }
 
 function navigateToCourseContent(id) {
+    const courses = getCourses()
     const lesson = courses[id].lessons;
     const navigateContent = document.querySelector('#navigate-content')
     navigateContent.innerHTML = `
