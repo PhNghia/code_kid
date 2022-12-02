@@ -133,7 +133,10 @@ export default class Quiz {
         const button = this.getElement('.quiz-submit-answers')
         button.addEventListener('click', () => {
             this.saveAnswerOfCurrentQuestion()
-            this.handleSubmitAnswers()
+            const agree = confirm("Are you sure you want to submit anwers?")
+            if (agree) {
+                this.handleSubmitAnswers()
+            }
         })
     }
 
